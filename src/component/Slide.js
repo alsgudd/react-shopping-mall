@@ -21,14 +21,14 @@ function Slide() {
             <Carousel.Item>
                 <img
                     className={`d-block ${styles.bg_img}`}
-                    src="http://cdn015.negagea.net/wherehouse/2023/main/230227_2.jpg"
+                    src="https://images.unsplash.com/photo-1596609548086-85bbf8ddb6b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                     alt="Second slide"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className={`d-block ${styles.bg_img}`}
-                    src="https://static.wixstatic.com/media/f20312_f68af1efdf1a48e4a89f60e9f5ce1242~mv2.jpg/v1/fill/w_1903,h_896,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f20312_f68af1efdf1a48e4a89f60e9f5ce1242~mv2.jpg"
+                    src="https://wallpapershome.com/images/pages/ico_h/18463.jpg"
                     alt="Third slide"
                 />
             </Carousel.Item>
