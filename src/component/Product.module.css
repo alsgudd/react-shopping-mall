@@ -1,20 +1,13 @@
-.all_tab_text {
-    color: black;
-    font-weight: 400;
-}
-
-.all_itembox {
+.product_itembox {
     margin: auto;
 }
-
-.all_img {
+.product_img {
     display: block;
     width: 100%;
     height: auto;
     cursor: pointer;
     margin: auto;
 }
-
-.all_text {
+.product_text {
     text-align: center;
 }

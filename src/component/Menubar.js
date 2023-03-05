@@ -18,11 +18,11 @@ function Menubar() {
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
             <NavDropdown title="Product" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={()=>{ navigate('/all') }}>All</NavDropdown.Item>
-              <NavDropdown.Item onClick={()=>{ navigate('/top') }}>Top</NavDropdown.Item>
-              <NavDropdown.Item onClick={()=>{ navigate('/bottom') }}>Bottom</NavDropdown.Item>
-              <NavDropdown.Item onClick={()=>{ navigate('/acc') }}>Acc</NavDropdown.Item>
-            </NavDropdown>            
+              <NavDropdown.Item onClick={()=>{ navigate('/tab/all') }}>All</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/tab/top') }}>Top</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/tab/bottom') }}>Bottom</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/tab/acc') }}>Acc</NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link href="#link">AboutMe</Nav.Link>
 
           </Nav>
