@@ -4,8 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from 'react-router-dom';
 
 function Menubar() {
+  const navigate = useNavigate();
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -13,18 +16,18 @@ function Menubar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
             <NavDropdown title="Product" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">All</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Top</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Bottom</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">Acc</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/all') }}>All</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/top') }}>Top</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/bottom') }}>Bottom</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>{ navigate('/acc') }}>Acc</NavDropdown.Item>
             </NavDropdown>            
             <Nav.Link href="#link">AboutMe</Nav.Link>
 
           </Nav>
           <Navbar.Collapse className="justify-content-end">
-            <Nav.Link href="/cart">Cart &nbsp;
+            <Nav.Link onClick={()=>{ navigate('/cart') }}>Cart &nbsp;
             <FontAwesomeIcon icon={ faCartShopping } />
             </Nav.Link>              
 
