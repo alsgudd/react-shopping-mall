@@ -12,6 +12,11 @@ function Home() {
             .then((result) => {
                 setData(result.data);
             })
+            .catch(() => {
+                return(
+                    <h2>Error 404! Cannot find server</h2>
+                )
+            })
     }
     useEffect(() => {
         getData();
@@ -33,7 +38,7 @@ function Home() {
                                         <img src={a.imgurl} 
                                         className={styles.home_mainImage}
                                         alt='product_main_img' />
-                                        <p>{a.name}<br />{a.price}</p>
+                                        <p className='p-2'>{a.name}<br />{a.price}</p>
                                     </div>
                                 </Col>
                             )
