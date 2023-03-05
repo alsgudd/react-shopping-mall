@@ -9,3 +9,10 @@ body {
   font-family: "Gloock";
 }
 
+div {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+}

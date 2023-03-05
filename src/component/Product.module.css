@@ -11,3 +11,6 @@
 .product_text {
     text-align: center;
 }
+.product_name {
+    cursor: pointer;
+}

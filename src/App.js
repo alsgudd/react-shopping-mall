@@ -22,7 +22,6 @@ function App() {
           <Route path='bottom' element={<Bottom />} />
           <Route path='acc' element={<Acc />} />
         </Route>
-        <Route path='/all' element={<All />} />
         <Route path='/product/:id' element={<Detail />} />
       </Routes>
     </>

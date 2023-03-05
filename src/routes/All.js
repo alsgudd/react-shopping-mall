@@ -27,7 +27,7 @@ function All() {
       <Container>
         <Row>
           {
-            data.map((a, i) => {
+            data && data.map((a, i) => {
               return (
                 <Product key={i} product={data[i]}/>
               )

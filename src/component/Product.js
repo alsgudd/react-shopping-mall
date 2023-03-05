@@ -17,8 +17,12 @@ function Product(props) {
                     onClick={() => {
                         navigate(`/product/${id}`)
                     }}
-                    />
-                <p className={`p-2 ${styles.product_text}`}>{product.name}<br />{product.price}</p>
+                />
+                <p className={`p-2 ${styles.product_text}`}>
+                    <span className={styles.product_name}
+                        onClick={() => { navigate(`/product/${id}`) }}>{product.name}
+                    </span><br />{`${Number(product.price).toLocaleString()} KRW`}
+                </p>
             </div>
         </Col>
     )
