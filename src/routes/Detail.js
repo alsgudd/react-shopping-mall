@@ -3,14 +3,21 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container, Row, Col, Nav, Button } from "react-bootstrap";
 import styles from './Detail.module.css';
-import CartButton from "../component/CartButton";
-import BuyButton from "../component/BuyButton";
+import CartModal from "../component/CartModal";
+import BuyModal from "../component/BuyModal";
 
 
 function Detail() {
     const { id } = useParams();
     const [data, setData] = useState({});
     const [tab, setTab] = useState(0);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const getDetail = useCallback(async () => {
         axios.get(`https://raw.githubusercontent.com/alsgudd/alsgudd.github.io/main/datasJSON/detailpgJSON/id${id}.json`)
             .then((result) => {
@@ -26,7 +33,6 @@ function Detail() {
     useEffect(() => {
         getDetail();
     }, [])
-    console.log(data);
     return (
         <Container className={styles.main_container}>
             <Row>
@@ -64,8 +70,43 @@ function Detail() {
                 <Col md={4}>
                     <div className={styles.right}>
                         <h4 className={styles.price}>{`PRICE: ${Number(data.price).toLocaleString()} KRW`}</h4>
-                        <BuyButton name={data.name}/>{' '}
-                        <CartButton id={data.id} name={data.name} price={data.price} imgurl={data.imgurl}/>
+                        <Button variant="dark" onClick={handleShow}>Buy Now</Button>{' '}
+                        <BuyModal show={show} handleClose={handleClose} />
+                        <Button variant="dark" onClick={() => {
+                            if (localStorage.getItem('cart') != null) {
+                                var temp = JSON.parse(localStorage.cart);
+                                var findIndex = temp.findIndex((element) => element.name === data.name);
+                                if (findIndex != -1) {
+                                    //해당 item이 이미 존재
+                                    temp[findIndex].quantity++;
+                                    localStorage.setItem('cart', JSON.stringify(temp));
+                                } else {
+                                    //item이 존재하지 않음 (새로 만들어야함.)
+                                    var pushitem = {
+                                        id: data.id,
+                                        name: data.name,
+                                        price: data.price,
+                                        quantity: 1,
+                                        imgurl: data.imgurl
+                                    }
+                                    temp.push(pushitem);
+                                    localStorage.setItem('cart', JSON.stringify(temp));
+                                }
+                            } else {
+                                var cart = [{
+                                    id: data.id,
+                                    name: data.name,
+                                    price: data.price,
+                                    quantity: 1,
+                                    imgurl: data.imgurl
+                                }]
+                                localStorage.setItem('cart', JSON.stringify(cart));
+                            }
+                            handleShow();
+                        }}>
+                            Add to Cart
+                        </Button>
+                        <CartModal name={data.name} show={show} handleClose={handleClose} />
                         <Nav variant="tabs" defaultActiveKey="link0" className={styles.navs}>
                             <Nav.Item>
                                 <Nav.Link onClick={() => { setTab(0) }} eventKey="link0">SIZE GUIDE</Nav.Link>

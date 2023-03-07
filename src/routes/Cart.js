@@ -1,20 +1,53 @@
 import styles from './Cart.module.css';
 import { Table, Container, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import BuyButton from '../component/BuyButton';
+import BuyModal from '../component/BuyModal';
 
 
 function Cart() {
     var localcart = localStorage.cart;
+    const [show, setShow] = useState(false);
     const [checkItems, setCheckItems] = useState([]);
     const [cart, setCart] = useState([]);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const resetCart = () => {
+        setCart([]);
+        localStorage.removeItem('cart');
+    }
+    const filterCart = () => {
+        let copy = [...cart];
+        console.log(copy);
+        console.log(checkItems);
+        for(let i = 0; i<checkItems.length; i++) {
+            copy = copy.filter((id) => id == checkItems[i]);
+        }
+        setCart(copy);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+
     useEffect(() => {
         setCart(localcart);
     }, [])
 
     if (localStorage.cart == undefined) {
         return (
-            <div>장바구니가 비었음.</div>
+            <Container className={`mt-5 ${styles.main_container}`}>
+                <h2>Cart</h2>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th><input type={'checkbox'}/></th>
+                            <th colSpan={2}>상품정보</th>
+                            <th>수량</th>
+                            <th>가격</th>
+                            <th>배송비</th>
+                        </tr>
+                    </thead>
+                    <tbody colSpan={6}>장바구니가 비었습니다.</tbody>
+                </Table>
+            </Container>
         )
     } else {
         localcart = JSON.parse(localcart);
@@ -66,7 +99,7 @@ function Cart() {
                                         /></td>
                                         <td ><img className={styles.cart_img} src={cart.imgurl[0]} /></td>
                                         <td>{cart.name}</td>
-                                        <td>                                            
+                                        <td>
                                             {cart.quantity}
                                         </td>
                                         <td>{`${Number(cart.price * cart.quantity).toLocaleString()} KRW`}</td>
@@ -85,8 +118,14 @@ function Cart() {
                     </tbody>
                 </Table>
                 <div className={styles.center}>
-                    <Button variant="secondary" className={`${styles.cart_btn} ${styles.position}`}>선택상품 주문하기</Button>
-                    <Button variant="secondary" className={`${styles.cart_btn} ${styles.position}`}>전체상품 주문하기</Button>
+                    <Button variant="secondary" 
+                        className={`${styles.cart_btn} ${styles.position}`}
+                        onClick={() => { handleShow(); filterCart(); } }
+                        >선택상품 주문하기</Button>
+                    <Button variant="secondary"
+                        className={`${styles.cart_btn} ${styles.position}`}
+                        onClick={() => { handleShow(); resetCart(); }}>전체상품 주문하기</Button>
+                    <BuyModal show={show} handleClose={handleClose} />
                 </div>
             </Container>
         );
