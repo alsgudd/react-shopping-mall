@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   sans-serif;
 `
 
-function CartButton({ name, price, imgurl }) {
+function CartButton({ id, name, price, imgurl }) {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ function CartButton({ name, price, imgurl }) {
           } else {
             //item이 존재하지 않음 (새로 만들어야함.)
             var pushitem = {
+              id: id,
               name: name,
               price: price,
               quantity: 1,
@@ -40,6 +41,7 @@ function CartButton({ name, price, imgurl }) {
           }
         } else {
           var cart = [{
+            id: id,
             name: name,
             price: price,
             quantity: 1,

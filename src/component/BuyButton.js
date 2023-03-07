@@ -33,7 +33,7 @@ function BuyButton({name}) {
                     </Modal.Header>
                     <Modal.Body>
                         구매가 정상적으로 완료되었습니다. <br />
-                        {`귀하가 구매한 상품은 ${name}입니다.`}
+                        이용해주셔서 감사합니다.
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>

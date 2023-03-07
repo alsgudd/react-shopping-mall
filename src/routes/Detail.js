@@ -65,7 +65,7 @@ function Detail() {
                     <div className={styles.right}>
                         <h4 className={styles.price}>{`PRICE: ${Number(data.price).toLocaleString()} KRW`}</h4>
                         <BuyButton name={data.name}/>{' '}
-                        <CartButton name={data.name} price={data.price} imgurl={data.imgurl}/>
+                        <CartButton id={data.id} name={data.name} price={data.price} imgurl={data.imgurl}/>
                         <Nav variant="tabs" defaultActiveKey="link0" className={styles.navs}>
                             <Nav.Item>
                                 <Nav.Link onClick={() => { setTab(0) }} eventKey="link0">SIZE GUIDE</Nav.Link>
