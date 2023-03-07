@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container, Row, Col, Nav, Button } from "react-bootstrap";
 import styles from './Detail.module.css';
+import CartButton from "../component/CartButton";
+import BuyButton from "../component/BuyButton";
 
 
 function Detail() {
@@ -62,8 +64,8 @@ function Detail() {
                 <Col md={4}>
                     <div className={styles.right}>
                         <h4 className={styles.price}>{`PRICE: ${Number(data.price).toLocaleString()} KRW`}</h4>
-                        <Button variant="dark">Buy Now</Button>{' '}
-                        <Button variant="dark">Add to Cart</Button>
+                        <BuyButton name={data.name}/>{' '}
+                        <CartButton name={data.name} price={data.price} imgurl={data.imgurl}/>
                         <Nav variant="tabs" defaultActiveKey="link0" className={styles.navs}>
                             <Nav.Item>
                                 <Nav.Link onClick={() => { setTab(0) }} eventKey="link0">SIZE GUIDE</Nav.Link>

@@ -8,6 +8,7 @@ import Sidebar from './component/Sidebar';
 import Top from './routes/Top';
 import Bottom from './routes/Bottom';
 import Acc from './routes/Acc';
+import Cart from './routes/Cart';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='acc' element={<Acc />} />
         </Route>
         <Route path='/product/:id' element={<Detail />} />
+        <Route path='/cart' element={<Cart /> } />
       </Routes>
     </>
   );
