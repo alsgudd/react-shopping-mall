@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-shopping-mall/static/css/main.d39b0dbe.css",
+    "main.js": "/react-shopping-mall/static/js/main.d0caa8c8.js",
+    "static/media/Gloock-Regular.ttf": "/react-shopping-mall/static/media/Gloock-Regular.46f1cea90d1c899f7c6e.ttf",
+    "index.html": "/react-shopping-mall/index.html",
+    "main.d39b0dbe.css.map": "/react-shopping-mall/static/css/main.d39b0dbe.css.map",
+    "main.d0caa8c8.js.map": "/react-shopping-mall/static/js/main.d0caa8c8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d39b0dbe.css",
+    "static/js/main.d0caa8c8.js"
+  ]
+}
