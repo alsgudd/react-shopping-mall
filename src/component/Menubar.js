@@ -16,7 +16,7 @@ function Menubar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/react-shopping-mall') }}>Home</Nav.Link>
             <NavDropdown title="Product" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={()=>{ navigate('/tab/all') }}>All</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>{ navigate('/tab/top') }}>Top</NavDropdown.Item>
