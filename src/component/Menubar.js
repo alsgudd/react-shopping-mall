@@ -23,7 +23,7 @@ function Menubar() {
               <NavDropdown.Item onClick={()=>{ navigate('/tab/bottom') }}>Bottom</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>{ navigate('/tab/acc') }}>Acc</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#link">AboutMe</Nav.Link>
+            <Nav.Link onClick={() => { navigate('/about') }}>About</Nav.Link>
 
           </Nav>
           <Navbar.Collapse className="justify-content-end">

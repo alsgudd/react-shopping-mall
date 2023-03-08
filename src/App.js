@@ -25,6 +25,7 @@ function App() {
         </Route>
         <Route path='/product/:id' element={<Detail />} />
         <Route path='/cart' element={<Cart /> } />
+        <Route path='/about' element={<div style={{textAlign: "center"}}>이 페이지는 Portfolio를 위해 React로 제작된 페이지입니다.</div>}/>
       </Routes>
     </>
   );
