@@ -16,7 +16,7 @@ function App() {
     <>
       <MyNavbar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/react-shopping-mall' element={<Home />} />
         <Route path='/tab' element={<Sidebar />}>
           <Route path='all' element={<All />} />
           <Route path='top' element={<Top />} />

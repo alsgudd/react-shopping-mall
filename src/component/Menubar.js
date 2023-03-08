@@ -12,7 +12,7 @@ function Menubar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand onClick={() => { navigate('/') }} style={{cursor: "pointer"}}>MDR</Navbar.Brand>
+        <Navbar.Brand onClick={() => { navigate('/react-shopping-mall') }} style={{cursor: "pointer"}}>MDR</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
