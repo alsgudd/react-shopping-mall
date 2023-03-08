@@ -1,5 +1,5 @@
 import styles from './Cart.module.css';
-import { Table, Container, Button } from 'react-bootstrap';
+import { Table, Container, Button, Modal } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import BuyModal from '../component/BuyModal';
 
@@ -17,13 +17,17 @@ function Cart() {
     }
     const filterCart = () => {
         let copy = [...cart];
-        console.log(copy);
-        console.log(checkItems);
-        for(let i = 0; i<checkItems.length; i++) {
-            copy = copy.filter((id) => id == checkItems[i]);
+        for (var i = 0; i < copy.length; i++) {
+            for (var j = 0; j < checkItems.length; j++) {
+                if (copy[i] && copy[i].id === checkItems[j]) {
+                    copy.splice(i, 1);
+                    i--;
+                }
+            }
         }
+        console.log(copy);
         setCart(copy);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(copy));
     }
 
 
@@ -38,7 +42,7 @@ function Cart() {
                 <Table>
                     <thead>
                         <tr>
-                            <th><input type={'checkbox'}/></th>
+                            <th><input type={'checkbox'} /></th>
                             <th colSpan={2}>상품정보</th>
                             <th>수량</th>
                             <th>가격</th>
@@ -110,7 +114,9 @@ function Cart() {
                         }
                         <tr>
                             <td colSpan={3}>
-                                <button className={styles.cart_btn}>선택상품 삭제</button>
+                                <button
+                                    className={styles.cart_btn}
+                                    onClick={filterCart}>선택상품 삭제</button>
                             </td>
                             <td></td>
                             <td colSpan={2}>{`Total Price: ${Number(totalPrice).toLocaleString()} KRW`}</td>
@@ -118,10 +124,10 @@ function Cart() {
                     </tbody>
                 </Table>
                 <div className={styles.center}>
-                    <Button variant="secondary" 
+                    <Button variant="secondary"
                         className={`${styles.cart_btn} ${styles.position}`}
-                        onClick={() => { handleShow(); filterCart(); } }
-                        >선택상품 주문하기</Button>
+                        onClick={() => { handleShow(); filterCart(); }}
+                    >선택상품 주문하기</Button>
                     <Button variant="secondary"
                         className={`${styles.cart_btn} ${styles.position}`}
                         onClick={() => { handleShow(); resetCart(); }}>전체상품 주문하기</Button>
