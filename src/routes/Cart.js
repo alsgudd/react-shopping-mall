@@ -9,7 +9,7 @@ function Cart() {
     const [show, setShow] = useState(false);
     const [checkItems, setCheckItems] = useState([]);
     const [cart, setCart] = useState([]);
-    const handleClose = () => setShow(false);
+    const handleClose = () => setShow(false) ;
     const handleShow = () => setShow(true);
     const resetCart = () => {
         setCart([]);
@@ -49,7 +49,11 @@ function Cart() {
                             <th>배송비</th>
                         </tr>
                     </thead>
-                    <tbody colSpan={6}>장바구니가 비었습니다.</tbody>
+                    <tbody>
+                        <tr>
+                            <th colSpan={6} className={styles.empty}>장바구니가 비었습니다.</th>
+                        </tr>                      
+                    </tbody>
                 </Table>
             </Container>
         )
@@ -131,7 +135,7 @@ function Cart() {
                     <Button variant="secondary"
                         className={`${styles.cart_btn} ${styles.position}`}
                         onClick={() => { handleShow(); resetCart(); }}>전체상품 주문하기</Button>
-                    <BuyModal show={show} handleClose={handleClose} />
+                    <BuyModal show={show} handleClose={handleClose} />                    
                 </div>
             </Container>
         );

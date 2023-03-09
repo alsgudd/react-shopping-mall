@@ -13,6 +13,7 @@ function Detail() {
     const [tab, setTab] = useState(0);
 
     const [show, setShow] = useState(false);
+    const [buy, setBuy] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -70,8 +71,8 @@ function Detail() {
                 <Col md={4}>
                     <div className={styles.right}>
                         <h4 className={styles.price}>{`PRICE: ${Number(data.price).toLocaleString()} KRW`}</h4>
-                        <Button variant="dark" onClick={handleShow}>Buy Now</Button>{' '}
-                        <BuyModal show={show} handleClose={handleClose} />
+                        <Button variant="dark" onClick={() => setBuy(true) }>Buy Now</Button>{' '}
+                        <BuyModal show={buy} handleClose={() => { setBuy(false)}} />
                         <Button variant="dark" onClick={() => {
                             if (localStorage.getItem('cart') != null) {
                                 var temp = JSON.parse(localStorage.cart);
