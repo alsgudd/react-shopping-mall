@@ -9,8 +9,18 @@ function Cart() {
     const [show, setShow] = useState(false);
     const [checkItems, setCheckItems] = useState([]);
     const [cart, setCart] = useState([]);
-    const handleClose = () => setShow(false) ;
+    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    /* const handleClose = (index) => {
+        let copy = [...show];
+        copy[index] = false;
+        setShow(copy);
+    }
+    const handleShow = (index) => {
+        let copy = [...show];
+        copy[index] = true;
+        setShow(copy);
+    } */
     const resetCart = () => {
         setCart([]);
         localStorage.removeItem('cart');
@@ -132,10 +142,17 @@ function Cart() {
                         className={`${styles.cart_btn} ${styles.position}`}
                         onClick={() => { handleShow(); filterCart(); }}
                     >선택상품 주문하기</Button>
+                    <BuyModal show={show} handleClose={ handleClose }/>
                     <Button variant="secondary"
                         className={`${styles.cart_btn} ${styles.position}`}
                         onClick={() => { handleShow(); resetCart(); }}>전체상품 주문하기</Button>
-                    <BuyModal show={show} handleClose={handleClose} />                    
+                    <BuyModal show={show} handleClose={ handleClose }/>
+                    {
+                        show == true ? 
+                        <BuyModal show={show} handleClose={handleClose} /> :
+                        null
+                    }
+                                     
                 </div>
             </Container>
         );
