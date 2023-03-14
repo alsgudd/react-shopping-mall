@@ -74,6 +74,7 @@ function Detail() {
                         <Button variant="dark" onClick={() => setBuy(true) }>Buy Now</Button>{' '}
                         <BuyModal show={buy} handleClose={() => { setBuy(false)}} />
                         <Button variant="dark" onClick={() => {
+                            console.log(localStorage.cart)
                             if (localStorage.getItem('cart') != null) {
                                 var temp = JSON.parse(localStorage.cart);
                                 var findIndex = temp.findIndex((element) => element.name === data.name);
