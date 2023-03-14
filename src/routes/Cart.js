@@ -1,4 +1,4 @@
-import styles from './Cart.module.css';
+import styles from './css/Cart.module.css';
 import { Table, Container, Button, Modal } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import BuyModal from '../component/BuyModal';
@@ -7,13 +7,24 @@ import BuyModal from '../component/BuyModal';
 function Cart() {
     var localcart = localStorage.cart;
     const [show, setShow] = useState(false);
+    const [buy, setBuy] = useState(false);
     const [checkItems, setCheckItems] = useState([]);
     const [cart, setCart] = useState([]);
-    const handleClose = () => setShow(false) ;
+    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    /* const handleClose = (index) => {
+        let copy = [...show];
+        copy[index] = false;
+        setShow(copy);
+    }
+    const handleShow = (index) => {
+        let copy = [...show];
+        copy[index] = true;
+        setShow(copy);
+    } */
     const resetCart = () => {
         setCart([]);
-        localStorage.removeItem('cart');
+        localStorage.setItem('cart', null);
     }
     const filterCart = () => {
         let copy = [...cart];
@@ -130,12 +141,12 @@ function Cart() {
                 <div className={styles.center}>
                     <Button variant="secondary"
                         className={`${styles.cart_btn} ${styles.position}`}
-                        onClick={() => { handleShow(); filterCart(); }}
+                        onClick={() => { handleShow(); filterCart();  }}
                     >선택상품 주문하기</Button>
                     <Button variant="secondary"
                         className={`${styles.cart_btn} ${styles.position}`}
-                        onClick={() => { handleShow(); resetCart(); }}>전체상품 주문하기</Button>
-                    <BuyModal show={show} handleClose={handleClose} />                    
+                        onClick={() => {  handleShow(); resetCart(); }}>전체상품 주문하기</Button>
+                    <BuyModal show={show} handleClose={ handleClose } />
                 </div>
             </Container>
         );

@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Slide from '../component/Slide';
-import styles from './Home.module.css';
+import styles from './css/Home.module.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

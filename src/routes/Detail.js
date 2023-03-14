@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container, Row, Col, Nav, Button } from "react-bootstrap";
-import styles from './Detail.module.css';
+import styles from './css/Detail.module.css';
 import CartModal from "../component/CartModal";
 import BuyModal from "../component/BuyModal";
 
