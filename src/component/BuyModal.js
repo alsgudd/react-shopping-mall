@@ -11,14 +11,6 @@ const StyledDiv = styled.div`
 
 function BuyModal({ show, handleClose }) {
 
-    /* BuyModal 띄우기 전에 사용자 정보 + 영수증 띄우면 좋겠는데.. */
-    useEffect(() => {
-        setTimeout(() => {
-            return (
-                <h2>구매중입니다..</h2>
-            )
-        }, 2000)
-    }, []) 
 
     return (
         <Modal
